@@ -1,3 +1,4 @@
 # Classificar Emails com LM e DSPy.
-## Projeto em andamento!
-## Versão Atual: 0.0.1 (corpo inicial)
+## Versão base formulada.
+## TODO: implementar estrutura de dados.
+## Versão Atual: 0.3

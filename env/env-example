@@ -1,1 +1,3 @@
 OPENAI_API_KEY = "your openai api-key"
+EMAIL = "the email you want to get the data"
+SENHA_EMAIL = "the password of the email above"
