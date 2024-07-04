@@ -1,3 +1,11 @@
 OPENAI_API_KEY = "your openai api-key"
+
 EMAIL = "the email you want to get the data"
-SENHA_EMAIL = "the password of the email above"
+APP_PASSWORD = "the app password"
+
+SEND_TO = "the email you want to send to"
+
+smtp_server = "smtp.gmail.com" 
+# Por exemplo, smtp.gmail.com para Gmail
+smtp_port = "587"
+# pode usar 587 nesse caso
