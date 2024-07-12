@@ -66,7 +66,6 @@ class sig_classificador_assunto(Signature):
     assunto = InputField(desc='Assunto do Email')
     assunto_resumido = OutputField(desc='assunto resumido obtido do assunto caso o assunto seja muito grande')
 
-
 class modulo_classificador(Module):
     def __init__(self):
         super().__init__()
@@ -83,7 +82,9 @@ def send_to_gmail(data = None, day = None):
     else:
         corpo = ''
         for d in data.get_dados():
-            corpo += d.__str__()
+            corpo += d.__str__() # you can send the text to, 
+                                 # just pass the var send_text as True to the function!
+                                 # the default is False!
         msg = MIMEMultipart()
         msg['From'] = environ['EMAIL']
         msg['To'] = environ['SEND_TO']
