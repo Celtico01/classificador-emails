@@ -1,0 +1,22 @@
+{
+  "generate_resu_assunto": {
+    "lm": null,
+    "traces": [],
+    "train": [],
+    "demos": [],
+    "signature_instructions": "A partir do {assunto} \n    caso o {assunto} seja muito grande crie o {assunto_resumido}",
+    "signature_prefix": "Assunto Resumido:",
+    "extended_signature_instructions": "A partir do {assunto} \n    caso o {assunto} seja muito grande crie o {assunto_resumido}",
+    "extended_signature_prefix": "Assunto Resumido:"
+  },
+  "generate_resu_texto": {
+    "lm": null,
+    "traces": [],
+    "train": [],
+    "demos": [],
+    "signature_instructions": "A partir do {texto} classifique o assunto principal do texto\n    crie {assunto_principal}",
+    "signature_prefix": "Assunto Principal:",
+    "extended_signature_instructions": "A partir do {texto} classifique o assunto principal do texto\n    crie {assunto_principal}",
+    "extended_signature_prefix": "Assunto Principal:"
+  }
+}

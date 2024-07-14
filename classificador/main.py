@@ -1,3 +1,5 @@
+#version
+version = '0.78'
 #libs
 from os import (
     environ,
@@ -11,7 +13,11 @@ from data_structure import (
     no
 )
 
-from datetime import datetime, timedelta
+from datetime import (
+    datetime, 
+    timedelta
+)
+
 from secure_smtplib import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -49,7 +55,7 @@ def load_lm_to_dspy(model = 'gpt-4o'):
 
     if gpt4o('hi'):
         #print(gpt4o('If you are there and everything is working please replay just thse: Everything Working!')[0])
-        settings.configure(lm=gpt4o)
+        settings.configure(lm=gpt4o, trace=[], temperature=0.0)
         del gpt4o
     
 class sig_classificador_texto(Signature):
@@ -106,11 +112,22 @@ def send_to_gmail(data = None, day = None):
 def main():
     load_lm_to_dspy()
     cot = modulo_classificador() # otimizar depois! usando optimizers
+    #save
+    path_modules = path.join(getcwd(), 'modulos')
+    if not path.exists(path.join(path_modules, 'cot-base-v-'+version+'.json')):
+        cot.save(path.join(path_modules, 'cot-base-v-'+version+'.json'))
+        #print('teste')
+    try:
+        #load the optimizer here!
+        pass
+    except FileNotFoundError:
+        #optimize here!
+        pass
     data = list_data()
     #try: implementar depois caso seja preciso!
     with Imbox(hostname='imap.gmail.com', username=environ['EMAIL'], password=environ['APP_PASSWORD']) as imbox:
         day = datetime.now() - timedelta(days=1)
-        print(day)
+        #print(day)
 
         messages = imbox.messages(date__on=day)
         # criar estrutura de dados
@@ -137,7 +154,9 @@ def main():
                         text=text[0], 
                         main_subject=main_subject, 
                         resu_subject=resu_subject))
+            
         send_to_gmail(data, day)
 
 if __name__ == '__main__':
     main()
+    #print(path.join(getcwd(), 'modulos','cot_base' + '-v:' + version + '.json'))
